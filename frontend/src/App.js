@@ -102,9 +102,7 @@ function PhotoSlideshow() {
   );
 }
 
-function LettersSection() {
-  const [letters, setLetters] = useState(['', '', '', '']);
-
+function LettersSection({ letters, setLetters }) {
   const updateLetter = (index, content) => {
     const newLetters = [...letters];
     newLetters[index] = content;
