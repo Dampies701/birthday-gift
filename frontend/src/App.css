@@ -1,38 +1,625 @@
+/* Import elegant serif fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: linear-gradient(135deg, #f3e7f9 0%, #e6d3f7 50%, #d4bbf0 100%);
+  min-height: 100vh;
+  color: #4a2c4a;
+}
+
 .App {
-    text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Header Styles */
+.app-header {
+  background: linear-gradient(135deg, rgba(116, 77, 169, 0.9) 0%, rgba(142, 68, 173, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 3px solid rgba(116, 77, 169, 0.3);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
+.subtitle {
+  font-size: 1.3rem;
+  color: #f8f4ff;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-tulip {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-section {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #744da9;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Tulip Divider */
+.tulip-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+  gap: 1rem;
+}
+
+.divider-tulip {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.divider-line {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #b19cd9, transparent);
+}
+
+/* Photo Slideshow */
+.photo-slideshow-container {
+  text-align: center;
+}
+
+.slideshow-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.photo-container {
+  position: relative;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(116, 77, 169, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.photo-container:hover {
+  transform: scale(1.02);
+}
+
+.slideshow-photo {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.hidden-message-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(116, 77, 169, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.3s ease;
+}
+
+.hidden-message-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 80%;
+  width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.message-textarea {
+  width: 100%;
+  height: 200px;
+  border: 2px solid #b19cd9;
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #4a2c4a;
+  background: #faf8ff;
+  resize: vertical;
+  outline: none;
+}
+
+.message-textarea:focus {
+  border-color: #744da9;
+  box-shadow: 0 0 10px rgba(116, 77, 169, 0.3);
+}
+
+.photo-click-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #744da9, #8e44ad);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(116, 77, 169, 0.3);
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(116, 77, 169, 0.4);
+}
+
+.tulip-nav-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photo-counter {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #744da9;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  border: 2px solid #b19cd9;
+}
+
+/* Letters Section */
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.letter-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 2px solid #b19cd9;
+  box-shadow: 0 8px 25px rgba(116, 77, 169, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.letter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(116, 77, 169, 0.3);
+}
+
+.letter-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #744da9;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.letter-textarea {
+  width: 100%;
+  height: 250px;
+  border: 2px solid #d4bbf0;
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a2c4a;
+  background: #faf8ff;
+  resize: vertical;
+  outline: none;
+}
+
+.letter-textarea:focus {
+  border-color: #744da9;
+  box-shadow: 0 0 10px rgba(116, 77, 169, 0.3);
+}
+
+/* Poems Section */
+.poems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.poem-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 2px solid #b19cd9;
+  box-shadow: 0 8px 25px rgba(116, 77, 169, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.poem-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(116, 77, 169, 0.3);
+}
+
+.poem-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #744da9;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.poem-textarea {
+  width: 100%;
+  height: 300px;
+  border: 2px solid #d4bbf0;
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #4a2c4a;
+  background: #faf8ff;
+  resize: vertical;
+  outline: none;
+}
+
+.poem-textarea:focus {
+  border-color: #744da9;
+  box-shadow: 0 0 10px rgba(116, 77, 169, 0.3);
+}
+
+/* Games Section */
+.game-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.game-tab {
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #b19cd9;
+  border-radius: 25px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #744da9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.game-tab:hover,
+.game-tab.active {
+  background: #744da9;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(116, 77, 169, 0.3);
+}
+
+.game-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 2px solid #b19cd9;
+  box-shadow: 0 10px 30px rgba(116, 77, 169, 0.2);
+}
+
+.game-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #744da9;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Virtual Garden Game */
+.garden-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.garden-button {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #744da9, #8e44ad);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.garden-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(116, 77, 169, 0.3);
+}
+
+.garden-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.water-meter {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(116, 77, 169, 0.1);
+  border-radius: 20px;
+  font-family: 'Playfair Display', serif;
+  color: #744da9;
+}
+
+.garden-plot {
+  position: relative;
+  height: 300px;
+  background: linear-gradient(to bottom, #e6f3ff, #c7e9b4);
+  border-radius: 15px;
+  border: 3px solid #8fbc8f;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  font-size: 2rem;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+/* Word Puzzle Game */
+.puzzle-content {
+  text-align: center;
+}
+
+.scrambled-word {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #744da9;
+  margin-bottom: 2rem;
+  letter-spacing: 0.2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.puzzle-input {
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  border: 2px solid #b19cd9;
+  border-radius: 25px;
+  outline: none;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #4a2c4a;
+  background: #faf8ff;
+  margin-bottom: 2rem;
+  width: 300px;
+}
+
+.puzzle-input:focus {
+  border-color: #744da9;
+  box-shadow: 0 0 10px rgba(116, 77, 169, 0.3);
+}
+
+.puzzle-button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #744da9, #8e44ad);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.puzzle-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(116, 77, 169, 0.3);
+}
+
+.puzzle-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #744da9;
+  font-weight: 600;
+}
+
+/* Balloon Pop Game */
+.balloon-score {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #744da9;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.balloon-game-area {
+  position: relative;
+  height: 400px;
+  background: linear-gradient(to bottom, #87CEEB, #98FB98);
+  border-radius: 15px;
+  border: 3px solid #744da9;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  animation: float 2s ease-in-out infinite;
+}
+
+.balloon:hover {
+  transform: scale(1.2);
+}
+
+/* Footer */
+.app-footer {
+  background: linear-gradient(135deg, rgba(116, 77, 169, 0.9) 0%, rgba(142, 68, 173, 0.9) 100%);
+  padding: 2rem;
+  text-align: center;
+  border-top: 3px solid rgba(116, 77, 169, 0.3);
+}
+
+.footer-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .main-nav {
     flex-direction: column;
     align-items: center;
+  }
+  
+  .slideshow-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-button {
+    width: 100%;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  }
+  
+  .letters-grid,
+  .poems-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .game-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .garden-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hidden-message-box {
+    max-width: 95%;
+    padding: 1rem;
+  }
+  
+  .main-content {
+    padding: 2rem 1rem;
+  }
 }
