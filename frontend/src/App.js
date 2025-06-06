@@ -414,13 +414,13 @@ function App() {
         {currentSection === 'letters' && (
           <>
             <TulipDivider />
-            <LettersSection />
+            <LettersSection letters={letters} setLetters={setLetters} />
           </>
         )}
         {currentSection === 'poems' && (
           <>
             <TulipDivider />
-            <PoemsSection />
+            <PoemsSection poems={poems} setPoems={setPoems} />
           </>
         )}
         {currentSection === 'games' && (
