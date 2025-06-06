@@ -268,16 +268,19 @@ function WordPuzzle() {
 function BalloonPop() {
   const [balloons, setBalloons] = useState([]);
   const [score, setScore] = useState(0);
+  const [gameActive, setGameActive] = useState(true);
 
-  const createBalloon = () => {
-    const newBalloon = {
-      id: Date.now(),
-      x: Math.random() * 400,
-      y: 300,
-      color: ['💜', '💖', '💝', '💕'][Math.floor(Math.random() * 4)]
-    };
-    setBalloons([...balloons, newBalloon]);
-  };
+  const createBalloon = React.useCallback(() => {
+    if (gameActive) {
+      const newBalloon = {
+        id: Date.now() + Math.random(),
+        x: Math.random() * 350,
+        y: 350,
+        color: ['💜', '💖', '💝', '💕'][Math.floor(Math.random() * 4)]
+      };
+      setBalloons(prev => [...prev, newBalloon]);
+    }
+  }, [gameActive]);
 
   const popBalloon = (id) => {
     setBalloons(balloons.filter(balloon => balloon.id !== id));
@@ -285,24 +288,33 @@ function BalloonPop() {
   };
 
   React.useEffect(() => {
-    const interval = setInterval(createBalloon, 2000);
+    const interval = setInterval(createBalloon, 1500);
     return () => clearInterval(interval);
-  }, [balloons]);
+  }, [createBalloon]);
 
   React.useEffect(() => {
     const moveInterval = setInterval(() => {
       setBalloons(prev => prev.map(balloon => ({
         ...balloon,
-        y: balloon.y - 2
+        y: balloon.y - 3
       })).filter(balloon => balloon.y > -50));
-    }, 50);
+    }, 100);
     return () => clearInterval(moveInterval);
   }, []);
+
+  const resetGame = () => {
+    setBalloons([]);
+    setScore(0);
+    setGameActive(true);
+  };
 
   return (
     <div className="balloon-pop">
       <h3 className="game-title">Pop the Love Balloons</h3>
-      <div className="balloon-score">Score: {score}</div>
+      <div className="balloon-controls">
+        <div className="balloon-score">Score: {score}</div>
+        <button onClick={resetGame} className="puzzle-button">Reset Game</button>
+      </div>
       <div className="balloon-game-area">
         {balloons.map(balloon => (
           <div
