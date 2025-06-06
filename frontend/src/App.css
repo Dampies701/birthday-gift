@@ -522,12 +522,17 @@ body {
 }
 
 /* Balloon Pop Game */
+.balloon-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 .balloon-score {
-  text-align: center;
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   color: #744da9;
-  margin-bottom: 2rem;
   font-weight: 600;
 }
 
