@@ -129,9 +129,7 @@ function LettersSection({ letters, setLetters }) {
   );
 }
 
-function PoemsSection() {
-  const [poems, setPoems] = useState(['', '', '']);
-
+function PoemsSection({ poems, setPoems }) {
   const updatePoem = (index, content) => {
     const newPoems = [...poems];
     newPoems[index] = content;
