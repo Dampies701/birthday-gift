@@ -370,6 +370,10 @@ function TulipDivider() {
 
 function App() {
   const [currentSection, setCurrentSection] = useState('slideshow');
+  
+  // Persistent state for letters and poems
+  const [letters, setLetters] = useState(['', '', '', '']);
+  const [poems, setPoems] = useState(['', '', '']);
 
   return (
     <div className="App">
