@@ -10,28 +10,28 @@ const tulipImages = [
   'https://images.pexels.com/photos/5734338/pexels-photo-5734338.jpeg'
 ];
 
-// Romantic placeholder images for slideshow
+// Your personal photos for slideshow
 const slideshowImages = [
-  'https://images.pexels.com/photos/32439850/pexels-photo-32439850.jpeg',
-  'https://images.pexels.com/photos/4830990/pexels-photo-4830990.jpeg',
-  'https://images.pexels.com/photos/32325971/pexels-photo-32325971.jpeg',
-  'https://images.unsplash.com/photo-1471530090166-fbe1875839c4',
-  'https://images.unsplash.com/reserve/165aTVpzTXGMXu1azUdy_IMG_8468.JPG',
-  'https://images.unsplash.com/photo-1541385496969-a3edfa5a94ed',
-  'https://images.pexels.com/photos/32421600/pexels-photo-32421600.jpeg',
-  'https://images.pexels.com/photos/32404924/pexels-photo-32404924.jpeg',
-  'https://images.pexels.com/photos/32412444/pexels-photo-32412444.jpeg',
-  'https://images.unsplash.com/photo-1472608127515-7a7e160c6ab9',
-  'https://images.unsplash.com/photo-1541581870022-09b9a4e61f90',
-  'https://images.unsplash.com/photo-1609564842155-98a072fc88b1',
-  'https://images.pexels.com/photos/27936622/pexels-photo-27936622.jpeg',
-  'https://images.pexels.com/photos/3217513/pexels-photo-3217513.jpeg',
-  'https://images.unsplash.com/photo-1591867192864-fed3a1622179',
-  'https://images.unsplash.com/photo-1666885181287-004f7ccfc0ae',
-  'https://images.unsplash.com/photo-1562337394-37e3adcb9ff5',
-  'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2',
-  'https://images.unsplash.com/photo-1494774157365-9e04c6720e47',
-  'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70'
+  '/images/photo1.jpg',
+  '/images/photo2.jpg',
+  '/images/photo3.jpg',
+  '/images/photo4.jpg',
+  '/images/photo5.jpg',
+  '/images/photo6.jpg',
+  '/images/photo7.jpg',
+  '/images/photo8.jpg',
+  '/images/photo9.jpg',
+  '/images/photo10.jpg',
+  '/images/photo11.jpg',
+  '/images/photo12.jpg',
+  '/images/photo13.jpg',
+  '/images/photo14.jpg',
+  '/images/photo15.jpg',
+  '/images/photo16.jpg',
+  '/images/photo17.jpg',
+  '/images/photo18.jpg',
+  '/images/photo19.jpg',
+  '/images/photo20.jpg'
 ];
 
 function PhotoSlideshow() {
